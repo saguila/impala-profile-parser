@@ -47,7 +47,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>ImpalaProfileParser</finalName>
+		<finalName>impala-profile-parser</finalName>
 		<plugins>
 
 			<!-- download source code in Eclipse, best practice -->
