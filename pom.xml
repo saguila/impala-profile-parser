@@ -24,10 +24,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.impala</groupId>
+			<groupId>com.cloudera.impala</groupId>
 			<artifactId>impala-frontend</artifactId>
 			<version>0.1</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-codec</groupId>
