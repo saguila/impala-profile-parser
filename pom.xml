@@ -15,7 +15,7 @@
 	</repositories>
 	
 	<properties>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 	</properties>
 	
 
@@ -23,6 +23,11 @@
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-core</artifactId>
+			<version>1.9.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.cloudera.impala</groupId>
 			<artifactId>impala-frontend</artifactId>
@@ -67,8 +72,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 
@@ -81,11 +86,6 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<archive>
-					  <manifest>
-						<mainClass>com.arjun.impala.ProfileParserClient</mainClass>
-					  </manifest>
-					</archive>
 
 				</configuration>
 				<executions>

@@ -218,7 +218,7 @@ public class ProfileParser {
 
 		try {
 
-			fileWriter = new FileWriter(outputFile);
+			fileWriter = new FileWriter(outputFile,false);
 			bufferedWriter = new BufferedWriter(fileWriter);
 
 			int i = 0;
