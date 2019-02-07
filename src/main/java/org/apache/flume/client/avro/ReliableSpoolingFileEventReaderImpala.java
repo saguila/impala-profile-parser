@@ -24,7 +24,6 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.flume.Context;
 import org.apache.flume.Event;
 import org.apache.flume.FlumeException;
@@ -41,8 +40,6 @@ import org.apache.flume.serialization.ResettableFileInputStream;
 import org.apache.flume.serialization.ResettableInputStream;
 import org.apache.flume.source.SpoolDirectorySourceConfigurationConstants;
 import org.apache.flume.source.SpoolDirectorySourceConfigurationConstants.ConsumeOrder;
-import org.apache.flume.source.SpoolDirectorySourceImpala;
-import org.apache.flume.tools.PlatformDetect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -624,11 +621,15 @@ public class ReliableSpoolingFileEventReaderImpala implements ReliableEventReade
     if (consumeOrder != ConsumeOrder.RANDOM ||
         candidateFileIter == null ||
         !candidateFileIter.hasNext()) {
+    	//Obtener los candidatos de dentro del directorio tanto de ficheros como de subcarpetas dentro del spool.
       candidateFiles = getCandidateFiles(spoolDirectory.toPath());
+      //Para empezar en 1 porque en este punto sabemos que al menos hay un fichero.
       listFilesCount++;
+      //Hacer un iterador de la lista.
       candidateFileIter = candidateFiles.iterator();
     }
 
+    //No hay ningun fichero en el directorio
     if (!candidateFileIter.hasNext()) { // No matching file in spooling directory.
       return Optional.absent();
     }
